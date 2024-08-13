@@ -1,0 +1,41 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "attributes": {
+        "title": "3 ways to achieve instant navigation",
+        "description": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Links in next.js feels laggy if the user has slow internet / server response with delays / serverless function hits a cold start. It ruins UX. And most likely, users will open fewer pages because of those delays. If every link always opened instantly, users would be more active on the website. Instant links improve UX, user engagement, and positively impact on SEO. Let's take a look at three ways to achieve instant navigation."
+              }
+            ]
+          }
+        ],
+        "slug": "3-ways-to-achieve-instant-navigation",
+        "thumbnail": {
+          "data": {
+            "id": 1,
+            "attributes": {
+              "thumbhash": "BhgKDYQXiId2iHeAfJd4elSAhwVH",
+              "name": "joshua_reddekopp_Sy_Ym_XS_Dn_J54_unsplash.jpg",
+              "alternativeText": null,
+              "height": 1280,
+              "width": 1920
+            }
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "start": 0,
+      "limit": 10,
+      "total": 1
+    }
+  }
+}
