@@ -27,7 +27,7 @@ export type ArticleItem = {
   slug: string;
   description: BlocksContent;
   thumbnail: APIResponse<Media>;
-  content: BlocksContent;
+  sections: any[];
 }
 
 export type ArticleListApi = APIResponseCollection<ArticleListItem>;

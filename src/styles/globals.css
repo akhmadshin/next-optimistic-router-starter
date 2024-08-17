@@ -16,6 +16,7 @@
   }
 }
 
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -31,8 +32,6 @@ body {
     text-wrap: balance;
   }
 }
-
-
 
 
 .main-header {

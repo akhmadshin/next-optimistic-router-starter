@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+import "@/styles/shiki.css";
+import "@/styles/yt-embed.css";
 import type { AppProps } from "next/app";
 import singletonRouter from 'next/dist/client/router';
 import { handleOptimisticNavigation, OptimisticRouterProvider } from 'next-optimistic-router';
@@ -6,7 +8,7 @@ import { DehydratedState, HydrationBoundary } from '@tanstack/react-query';
 import WithQueryClientProvider from '@/components/WithQueryClientProvider';
 import { Layout } from '@/components/Layout';
 import { createRouteLoader } from 'next/dist/client/route-loader';
-import { useEffect, useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useRouter } from 'next/router';
 import { transitionHelper } from '@/lib/transitionHelper';
 

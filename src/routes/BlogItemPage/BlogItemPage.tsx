@@ -1,4 +1,3 @@
-import { SkeletonBlogItemPage } from '@/routes/BlogItemPage/SkeletonBlogItemPage';
 import React from 'react';
 import { usePageData } from '@/hooks/usePageData';
 import { BlogItemPageProps } from '@/types/pages/blogItemPage';
@@ -6,6 +5,8 @@ import { Container } from '@/components/Container';
 import { Meta } from '@/components/Meta';
 import { Image } from '@/components/Image';
 import { RichText } from '@/components/RichText';
+import { SkeletonBlogItemPage } from '@/routes/BlogItemPage/SkeletonBlogItemPage';
+import { SectionsRenderer } from '@/components/SectionsRenderer';
 
 export const BlogItemPage = () => {
   const { data: article, isLoading, isFetching} = usePageData<BlogItemPageProps>();
@@ -22,7 +23,7 @@ export const BlogItemPage = () => {
   const articleAttributes = article.attributes || {};
   const coverAttributes = articleAttributes.thumbnail.data!.attributes || {};
 
-  const {title, description, content} = articleAttributes;
+  const {title, description, sections } = articleAttributes;
 
   return (
     <Container>
@@ -53,7 +54,7 @@ export const BlogItemPage = () => {
             <RichText content={description}/>
           </div>
           <div className="dark:text-gray-100">
-            <RichText content={content} />
+            <SectionsRenderer sections={sections!} />
           </div>
         </div>
       </article>
