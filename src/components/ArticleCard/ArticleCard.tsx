@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 
 import { Link } from '@/components/Link';
+import { SkeletonArticleCard } from '@/components/ArticleCard/SkeletonArticleCard';
 import { Image } from '@/components/Image';
 import { RichText } from '@/components/RichText';
 import { ApiResponseMedia, ArticleListItem } from '@/types/api';
@@ -14,6 +15,10 @@ interface Props {
 export const ArticleCard: React.FC<Props> = ({ article, priority }) => {
   const imageRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  if (!article) {
+    return <SkeletonArticleCard/>
+  }
 
   const articleAttributes = article.attributes;
   const coverAttributes = (articleAttributes.thumbnail as ApiResponseMedia).data.attributes;

@@ -21,10 +21,12 @@ export const Link = React.forwardRef<HTMLAnchorElement, Props>(function LinkComp
     if (onClick) {
       onClick(e);
     }
-
-    handleOptimisticNavigation(href, singletonRouter, () => {
-      window.placeholderData = placeholderData;
+    handleOptimisticNavigation({
+      href,
+      singletonRouter,
+      withTrailingSlash: Boolean(process.env.__NEXT_TRAILING_SLASH),
     });
+    window.placeholderData = placeholderData;
   }
 
   return (

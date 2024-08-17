@@ -1870,10 +1870,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-next-optimistic-router@^0.0.4-rc.1:
-  version "0.0.4-rc.1"
-  resolved "https://registry.yarnpkg.com/next-optimistic-router/-/next-optimistic-router-0.0.4-rc.1.tgz#0fca6e6359ab96e15d9782ac9e82f3895204f265"
-  integrity sha512-2oaUJZjFsd0Cu5pkl5r04oYpUSZz/KQQ5OKK2GQhgdZjrKo1gUz3rLD8HxjHaJ2g6KKIcywXLYNIjlvmCsDTxg==
+next-optimistic-router@0.0.4-rc.4:
+  version "0.0.4-rc.4"
+  resolved "https://registry.yarnpkg.com/next-optimistic-router/-/next-optimistic-router-0.0.4-rc.4.tgz#0e1606cea5d817a3eee4a9032b5f958cc0813d47"
+  integrity sha512-X1yLwbpd9MgyanmNZQA0V5HrXdRKIrrwcdFthAVGr2fdr2bPJMTI54gtTLBZaM4xWc5SmfiE17g7PhgPyxN21g==
 
 next@14.2.5:
   version "14.2.5"
