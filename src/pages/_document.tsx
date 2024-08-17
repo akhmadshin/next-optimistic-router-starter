@@ -4,9 +4,9 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body>
-        <Main />
-        <NextScript />
+      <body className="dar krelative min-h-screen overflow-x-hidden bg-background font-sans antialiased transition-[background]">
+        <Main/>
+        <NextScript/>
       </body>
     </Html>
   );

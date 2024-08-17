@@ -11,6 +11,7 @@ import { createRouteLoader } from 'next/dist/client/route-loader';
 import { useLayoutEffect } from 'react';
 import { useRouter } from 'next/router';
 import { transitionHelper } from '@/lib/transitionHelper';
+import { ThemeProvider } from 'next-themes';
 
 
 // Prefetch all js chunks after the page loads
@@ -49,15 +50,22 @@ export default function App({ Component, pageProps }: AppProps<{ dehydratedState
 
   return (
     <WithQueryClientProvider>
-      <OptimisticRouterProvider singletonRouter={singletonRouter}>
-        <HydrationBoundary state={pageProps.dehydratedState} options={{
-          defaultOptions: {},
-        }}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </HydrationBoundary>
-      </OptimisticRouterProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <OptimisticRouterProvider singletonRouter={singletonRouter}>
+          <HydrationBoundary state={pageProps.dehydratedState} options={{
+            defaultOptions: {},
+          }}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </HydrationBoundary>
+        </OptimisticRouterProvider>
+      </ThemeProvider>
     </WithQueryClientProvider>
 
   );
