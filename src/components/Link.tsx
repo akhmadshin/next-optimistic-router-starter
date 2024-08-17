@@ -3,6 +3,7 @@ import React, { AnchorHTMLAttributes, MouseEvent, PropsWithChildren } from 'reac
 import { handleOptimisticNavigation } from 'next-optimistic-router';
 import singletonRouter from 'next/router';
 import { transitionHelper } from '@/lib/transitionHelper';
+import { useModeStore } from '@/stores/modeStore';
 
 type NextLinkProps = PropsWithChildren<Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> &
   LinkProps>
@@ -22,16 +23,20 @@ export const Link = React.forwardRef<HTMLAnchorElement, Props>(function LinkComp
     children,
     ...restProps
   } = props;
+  const isOptimisticMode = useModeStore(state => state.isOptimisticMode);
+
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (onClick) {
       onClick(e);
     }
-    handleOptimisticNavigation({
-      href,
-      singletonRouter,
-      withTrailingSlash: Boolean(process.env.__NEXT_TRAILING_SLASH),
-    });
-    window.placeholderData = placeholderData;
+    if (isOptimisticMode) {
+      handleOptimisticNavigation({
+        href,
+        singletonRouter,
+        withTrailingSlash: Boolean(process.env.__NEXT_TRAILING_SLASH),
+      });
+      window.placeholderData = placeholderData;
+    }
     startPageTransition();
   }
 
