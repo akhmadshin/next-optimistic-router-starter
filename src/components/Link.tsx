@@ -2,18 +2,23 @@ import NextLink, { LinkProps } from 'next/link';
 import React, { AnchorHTMLAttributes, MouseEvent, PropsWithChildren } from 'react';
 import { handleOptimisticNavigation } from 'next-optimistic-router';
 import singletonRouter from 'next/router';
+import { transitionHelper } from '@/lib/transitionHelper';
 
 type NextLinkProps = PropsWithChildren<Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> &
   LinkProps>
 
 type Props = NextLinkProps & {
   placeholderData?: object;
+  beforeTransition?: () => void;
+  afterTransition?: () => void;
 }
 export const Link = React.forwardRef<HTMLAnchorElement, Props>(function LinkComponent(props, forwardedRef) {
   const {
+    placeholderData,
+    beforeTransition,
+    afterTransition,
     onClick,
     href,
-    placeholderData,
     children,
     ...restProps
   } = props;
@@ -27,6 +32,30 @@ export const Link = React.forwardRef<HTMLAnchorElement, Props>(function LinkComp
       withTrailingSlash: Boolean(process.env.__NEXT_TRAILING_SLASH),
     });
     window.placeholderData = placeholderData;
+    startPageTransition();
+  }
+
+  const startPageTransition = () => {
+    if (beforeTransition) {
+      beforeTransition()
+    }
+
+    if (!window.pageMounted) {
+      window.pageMountedPromise = new Promise(resolve => {
+        window.pageMounted = resolve;
+      })
+    }
+
+    transitionHelper({
+      updateDOM: async () => {
+        if (window.pageMounted) {
+          if (afterTransition) {
+            afterTransition();
+          }
+          await window.pageMountedPromise;
+        }
+      },
+    });
   }
 
   return (

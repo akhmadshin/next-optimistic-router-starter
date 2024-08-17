@@ -23,9 +23,22 @@ export const ArticleCard: React.FC<Props> = ({ article, priority }) => {
   const articleAttributes = article.attributes;
   const coverAttributes = (articleAttributes.thumbnail as ApiResponseMedia).data.attributes;
 
+  const handleBeforeTransition = () => {
+    if (imageRef.current) {
+      imageRef.current.style.viewTransitionName = 'banner-img'
+    }
+  };
+  const handleAfterTransition = () => {
+    if (imageRef.current) {
+      imageRef.current.style.viewTransitionName = '';
+    }
+  }
+
   return (
     <div ref={containerRef}>
       <Link
+        beforeTransition={handleBeforeTransition}
+        afterTransition={handleAfterTransition}
         href={`/blog/${articleAttributes.slug}/`}
         placeholderData={article}
         className={'pointer-events-auto card-link'}

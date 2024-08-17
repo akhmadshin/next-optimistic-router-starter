@@ -8,6 +8,7 @@ import { Layout } from '@/components/Layout';
 import { createRouteLoader } from 'next/dist/client/route-loader';
 import { useEffect, useLayoutEffect } from 'react';
 import { useRouter } from 'next/router';
+import { transitionHelper } from '@/lib/transitionHelper';
 
 
 // Prefetch all js chunks after the page loads
@@ -32,6 +33,14 @@ export default function App({ Component, pageProps }: AppProps<{ dehydratedState
         singletonRouter,
         withTrailingSlash: Boolean(process.env.__NEXT_TRAILING_SLASH),
       });
+      transitionHelper({
+        updateDOM: async () => {
+          if (window.pageMounted) {
+            await window.pageMountedPromise;
+          }
+        },
+      });
+
       return true;
     });
   }, [router])
