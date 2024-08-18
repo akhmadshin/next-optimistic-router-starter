@@ -12,7 +12,7 @@ import { useLayoutEffect } from 'react';
 import { useRouter } from 'next/router';
 import { transitionHelper } from '@/lib/transitionHelper';
 import { ThemeProvider } from 'next-themes';
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
+import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
 
 
 // Prefetch all js chunks after the page loads

@@ -4,15 +4,42 @@ import { withSSRTanStackQuery } from '@/lib/withSSRTanStackQuery';
 import { HomePage } from '@/routes/HomePage';
 import { timeout } from '@/lib/timeout';
 import { isServerReq } from '@/lib/is-server-req';
+import { APIResponseCollection } from '@/types/strapi';
 
 export const getServerSideProps = withSSRTanStackQuery<any>(async ({ req }) => {
   // Imitate slow api on soft navigation
   if (!isServerReq(req)) {
     await timeout();
   }
-  const file = await fs.readFile(path.resolve(`public/mocks/articles.json`), 'utf-8')
+  if (!process.env.FRONTEND_BACKEND_API_SECRET) {
+    // Imitate slow api
+    const file = await fs.readFile(path.resolve(`public/mocks/articles.json`), 'utf-8')
+    return {
+      props: JSON.parse(file) as APIResponseCollection<'api::article.article'>
+    };
+  }
+
+  const pageNumber = 0;
+  const limitNumber = 10;
+
+  const urlParamsObject: APIUrlParams<"api::article.article"> = {
+    sort: { createdAt: "desc" },
+    fields: ['title', 'description', 'slug'],
+    populate: {
+      thumbnail: {
+        fields: ['thumbhash', 'name', 'alternativeText', 'height', 'width'],
+      },
+    },
+    pagination: {
+      start: pageNumber * limitNumber,
+      limit: limitNumber,
+    },
+  };
+
+  const posts = await fetchMany("api::article.article", urlParamsObject);
+
   return {
-    props: JSON.parse(file)
+    props: posts
   };
 })
 

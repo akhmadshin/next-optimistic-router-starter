@@ -1,6 +1,6 @@
 import type { ParentComponent } from '@/types/general';
 import { useQueryClient } from '@tanstack/react-query';
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
+import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
 
 export const Page: ParentComponent = ({children}) => {
   const queryClient = useQueryClient()
