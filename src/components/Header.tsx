@@ -27,7 +27,7 @@ export function Header() {
             {/*</NextLink>*/}
           </div>
           <div className={navClassName}>
-            <a href="https://github.com/akhmadshin" target="_blank" rel="noreferrer">
+            <a href="https://github.com/akhmadshin/next-optimistic-router" target="_blank" rel="noreferrer">
               <GithubIcon />
             </a>
             <ModeSwitch />
