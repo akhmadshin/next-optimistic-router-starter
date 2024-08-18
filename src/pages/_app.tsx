@@ -12,6 +12,7 @@ import { useLayoutEffect } from 'react';
 import { useRouter } from 'next/router';
 import { transitionHelper } from '@/lib/transitionHelper';
 import { ThemeProvider } from 'next-themes';
+import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
 
 // Prefetch all js chunks after the page loads
@@ -27,7 +28,7 @@ import { ThemeProvider } from 'next-themes';
 export default function App({ Component, pageProps }: AppProps<{ dehydratedState: DehydratedState}>) {
   const router = useRouter();
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     router.prefetch = async () => Promise.resolve(undefined);
 
     router.beforePopState((state) => {

@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import { withSSRTanStackQuery } from '@/withSSRTanStackQuery';
+import { withSSRTanStackQuery } from '@/lib/withSSRTanStackQuery';
 import { HomePage } from '@/routes/HomePage';
 import { timeout } from '@/lib/timeout';
 import { isServerReq } from '@/lib/is-server-req';

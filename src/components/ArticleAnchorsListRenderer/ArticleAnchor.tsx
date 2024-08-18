@@ -1,11 +1,9 @@
 import * as React from "react";
 import { Component } from '@/types/general';
-import { RichTextSection, RichTextSectionProps } from '@/components/SectionsRenderer/section/RichTextSection';
+import { RichTextSectionProps } from '@/components/SectionsRenderer/section/RichTextSection';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
-import { HeaderSectionProps } from '@/components/SectionsRenderer/section/HeaderSection';
 
 import { stringToHash } from '@/lib/string-to-hash';
-import { getHeadings } from '@/lib/get-headings';
 
 export interface TextInlineNode {
   type: 'text';
@@ -37,8 +35,6 @@ export interface HeadingBlockNode {
 
 export const ArticleAnchor: Component<RichTextSectionProps> = (props, ref) => {
   const { section } = props;
-
-  getHeadings(props);
 
   if (!section.content) {
     return null;

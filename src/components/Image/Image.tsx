@@ -1,7 +1,8 @@
 import type { ImageProps } from 'next/image';
 import NextImage from 'next/image';
-import React, { forwardRef, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPngDataUri } from './createPngDataUri';
+import { requestIdleCallback } from '@/lib/request-idle-callback'
 
 type Props = Omit<ImageProps, 'alt'> & {
   thumbhash: string;

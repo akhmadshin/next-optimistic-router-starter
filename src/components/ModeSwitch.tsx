@@ -1,12 +1,10 @@
 import React from 'react';
 import { ParentComponent } from '@/types/general';
 import { useModeStore } from '@/stores/modeStore';
-import { useRouter } from 'next/router';
 
 export const ModeSwitch: ParentComponent = () => {
   const isOptimisticMode = useModeStore(state => state.isOptimisticMode);
   const setMode = useModeStore(state => state.setMode);
-  const router = useRouter();
 
   const handleChange = () => {
     setMode(!isOptimisticMode);

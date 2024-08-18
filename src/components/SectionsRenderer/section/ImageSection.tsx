@@ -1,4 +1,3 @@
-import type { Attribute } from "@turbostrapi/backend";
 import * as React from "react";
 import { forwardRef } from 'react';
 import { Image } from '@/components/Image';
@@ -6,9 +5,7 @@ import { ApiResponseMedia } from '@/types/api';
 
 export interface RichTextSectionProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  section: Attribute.GetDynamicZoneValue<
-    Attribute.DynamicZone<["sections.image"]>
-  >[number];
+  section: any;
 }
 
 export const ImageSection = forwardRef<HTMLImageElement, RichTextSectionProps>(

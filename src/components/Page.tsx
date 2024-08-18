@@ -1,11 +1,11 @@
 import type { ParentComponent } from '@/types/general';
 import { useQueryClient } from '@tanstack/react-query';
-import { useLayoutEffect } from 'react';
+import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
 export const Page: ParentComponent = ({children}) => {
   const queryClient = useQueryClient()
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (typeof window === 'undefined') {
       return;
     }

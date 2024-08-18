@@ -3,7 +3,7 @@ import { HeadingBlockNode } from '@/components/ArticleAnchorsListRenderer/Articl
 import { RichTextSectionProps } from '@/components/SectionsRenderer/section/RichTextSection';
 
 
-export const getHeadings = (richTextSection?: RichTextSectionProps): HeadingBlockNode[] => {
+const getHeadings = (richTextSection?: RichTextSectionProps): HeadingBlockNode[] => {
   if (!richTextSection?.section.content) {
     return [];
   }

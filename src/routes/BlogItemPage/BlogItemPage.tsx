@@ -7,6 +7,7 @@ import { Image } from '@/components/Image';
 import { RichText } from '@/components/RichText';
 import { SkeletonBlogItemPage } from '@/routes/BlogItemPage/SkeletonBlogItemPage';
 import { SectionsRenderer } from '@/components/SectionsRenderer';
+import { ArticleAnchorsListRenderer } from '@/components/ArticleAnchorsListRenderer/ArticleAnchorsListRenderer';
 
 export const BlogItemPage = () => {
   const { data: article, isLoading, isFetching} = usePageData<BlogItemPageProps>();
@@ -53,6 +54,7 @@ export const BlogItemPage = () => {
           <div className="text-xl mt-8">
             <RichText content={description}/>
           </div>
+          <ArticleAnchorsListRenderer sections={articleAttributes.sections as any}/>
           <div className="dark:text-gray-100">
             <SectionsRenderer sections={sections!} />
           </div>
